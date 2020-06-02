@@ -35,11 +35,11 @@ public class Path {
      */
    public static Path createFastestPathFromNodes(Graph graph, List<Node> nodes)
             throws IllegalArgumentException {
-        List<Arc> arcs_suc = new ArrayList<Arc>();
-        int cpt=0;
-        double min;
         List<Arc> arcs = new ArrayList<Arc>();
-        Arc arc_c=null;
+        List<Arc> arcs_suc = new ArrayList<Arc>();
+        double min;
+        int cpt=0;
+        
         if(nodes.size()==0) {
         	return new Path(graph);
         } else if (nodes.size()==1) {
@@ -49,7 +49,8 @@ public class Path {
         		cpt++;
         		if(n.hasSuccessors()) {
         			arcs_suc=n.getSuccessors();
-    	        	min=Double.POSITIVE_INFINITY;
+        	        Arc arc_c=null;
+        	        min=Double.POSITIVE_INFINITY;
     	        	for (Arc arc:arcs_suc) {
     	        		if(cpt<nodes.size()) {
     	        			Node node=arc.getDestination();
@@ -68,9 +69,7 @@ public class Path {
     		            throw new IllegalArgumentException("list as second argument not valid");
     	
     				}
-    	        	arc_c=null;
-        		}
-	        	
+        		}	        	
 	        }
 	        return new Path(graph, arcs);
         }
@@ -92,11 +91,11 @@ public class Path {
      */
     public static Path createShortestPathFromNodes(Graph graph, List<Node> nodes)
             throws IllegalArgumentException {
-        List<Arc> arcs_suc = new ArrayList<Arc>();
-        int cpt=0;
-        double min;
         List<Arc> arcs = new ArrayList<Arc>();
-        Arc arc_c=null;
+    	List<Arc> arcs_suc = new ArrayList<Arc>();
+        int cpt=0;
+        double min; 
+        
         if(nodes.size()==0) {
         	return new Path(graph);
         } else if (nodes.size()==1) {
@@ -106,7 +105,8 @@ public class Path {
         		cpt++;
         		if(n.hasSuccessors()) {
         			arcs_suc=n.getSuccessors();
-    	        	min=Double.POSITIVE_INFINITY;
+        	        Arc arc_c=null;
+        	        min=Double.POSITIVE_INFINITY;
     	        	for (Arc arc:arcs_suc) {
     	        		if(cpt<nodes.size()) {
     	        			Node node=arc.getDestination();
@@ -125,9 +125,7 @@ public class Path {
     		            throw new IllegalArgumentException("list as second argument not valid");
     	
     				}
-    	        	arc_c=null;
-        		}
-	        	
+        		}	        	
 	        }
 	        return new Path(graph, arcs);
         }
@@ -236,7 +234,7 @@ public class Path {
      * @return List of arcs in the path.
      */
     public List<Arc> getArcs() {
-        return Collections.unmodifiableList(arcs);
+        return Collections.unmodifiableList(arcs); 
     }
 
     /**

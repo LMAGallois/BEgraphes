@@ -1,6 +1,7 @@
 package org.insa.graphs.algorithm.utils;
 
 import java.util.ArrayList;
+import org.insa.graphs.algorithm.shortestpath.*;
 
 /**
  * Implements a binary heap containing elements of type E.
@@ -137,7 +138,21 @@ public class BinaryHeap<E extends Comparable<E>> implements PriorityQueue<E> {
 
     @Override
     public void remove(E x) throws ElementNotFoundException {
-        // TODO:
+    	if (isEmpty()) {
+            throw new ElementNotFoundException(x);
+    	}
+    	int index=this.array.indexOf(x);
+    
+    	if(index==-1) {
+            throw new ElementNotFoundException(x);
+    	}
+        else if(index<this.currentSize){
+        
+    		E der=this.array.get(--this.currentSize);
+    		this.arraySet(index, der);
+    		this.percolateUp(index);
+    		this.percolateDown(index);
+        }
     }
 
     @Override
@@ -200,6 +215,34 @@ public class BinaryHeap<E extends Comparable<E>> implements PriorityQueue<E> {
     @Override
     public String toString() {
         return BinaryHeapFormatter.toStringTree(this, 8);
+    }
+    
+    public boolean isValid(int index) {
+    	boolean rep=true;
+    	int taille=this.currentSize;
+    	if(taille==0) {;}
+    	else if (taille==1) {;}
+    	else{
+        	E current=this.array.get(index);
+        	int i_left=indexLeft(index);
+        	int i_right=i_left+1;
+        	if(i_left<taille) {
+        		if(current.compareTo(this.array.get(i_left))>0) {
+        			rep=false;
+        		}
+        		else {
+        			rep=isValid(i_left);
+        		}
+        	}
+        	if(i_right<taille) {
+        		if(current.compareTo(this.array.get(i_right))>0) {
+        			rep=false;
+        		}else{
+        			rep=isValid(i_right);
+        		}
+        	}
+    	}
+    	return rep;
     }
 
 }

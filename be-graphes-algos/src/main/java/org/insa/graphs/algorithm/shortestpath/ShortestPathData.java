@@ -22,7 +22,7 @@ public class ShortestPathData extends AbstractInputData {
     public ShortestPathData(Graph graph, Node origin, Node destination, ArcInspector arcInspector) {
         super(graph, arcInspector);
         this.origin = origin;
-        this.destination = destination;
+        this.destination = destination; 
     }
 
     /**
@@ -42,6 +42,6 @@ public class ShortestPathData extends AbstractInputData {
     @Override
     public String toString() {
         return "Shortest-path from #" + origin.getId() + " to #" + destination.getId() + " ["
-                + this.arcInspector.toString().toLowerCase() + "]";
+                + this.arcInspector.toString().toLowerCase() + "]"; 
     }
 }

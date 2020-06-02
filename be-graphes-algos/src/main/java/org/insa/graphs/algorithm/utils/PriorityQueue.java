@@ -77,5 +77,18 @@ public interface PriorityQueue<E extends Comparable<E>> {
      * @throws EmptyPriorityQueueException if this queue is empty.
      */
     public E deleteMin() throws EmptyPriorityQueueException;
-
+    
+    /**
+     * Check if the BinaryHeap is valid, i.e., if the parent node of the heap is less than its child.ren 
+     * 
+     * <p>
+     * <b>Complexity:</b> <i>O(n)</i>
+     * </p>
+     * 
+     * @param l'index à partir duquel on veut tester le tas
+     * 
+     * @return true if the heap is valid, false otherwise
+     * 
+     */
+    //public boolean isValid(int index);
 }

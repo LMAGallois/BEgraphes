@@ -11,7 +11,7 @@ public abstract class ShortestPathAlgorithm extends AbstractAlgorithm<ShortestPa
 
     @Override
     public ShortestPathSolution run() {
-        return (ShortestPathSolution) super.run();
+        return (ShortestPathSolution) super.run(); 
     }
 
     @Override
@@ -67,3 +67,4 @@ public abstract class ShortestPathAlgorithm extends AbstractAlgorithm<ShortestPa
         }
     }
 }
+
